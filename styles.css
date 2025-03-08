@@ -1,0 +1,278 @@
+/* Importer la police Poppins depuis Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Styles de base pour les petits écrans (mobile-first) */
+body {
+    font-family: 'Poppins', sans-serif; /* Utiliser la police Poppins */
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0; /* Supprimer le padding pour utiliser tout l'écran */
+    overflow: hidden; /* Empêcher le défilement */
+}
+
+.container {
+    display: flex;
+    flex-direction: row; /* Aligner l'image et le chatbot côte à côte */
+    align-items: center;
+    gap: 20px;
+    width: 100%; /* Prendre toute la largeur de l'écran */
+    height: 100%; /* Prendre toute la hauteur de l'écran */
+    margin: 0;
+    padding: 20px; /* Ajouter un peu de marge intérieure */
+    position: relative; /* Pour positionner l'image de manière absolue */
+}
+
+/* Styles pour l'image du chatbot */
+.chatbot-image {
+    position: absolute; /* Position absolue pour centrer l'image */
+    left: 20px; /* Position à gauche */
+    top: 50%; /* Centrer verticalement */
+    transform: translateY(-50%); /* Ajuster pour un centrage parfait */
+    z-index: 10; /* S'assurer que l'image est au-dessus du chat */
+}
+
+.chatbot-image img {
+    width: 100px; /* Taille de l'image réduite pour les petits écrans */
+    height: 100px;
+    border-radius: 50%;
+    animation: float 3s ease-in-out infinite; /* Animation de flottement */
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Styles pour le conteneur du chat */
+.chat-container {
+    flex: 1; /* Prendre tout l'espace disponible */
+    background-color: #fff;
+    border-radius: 20px; /* Bordures plus arrondies */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Ombre plus prononcée */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 90%; /* Prendre 90% de la hauteur pour laisser de l'espace */
+    margin-left: 120px; /* Laisser de l'espace pour l'image */
+}
+
+.chat-header {
+    background-color: orange; /* Couleur d'en-tête modifiée */
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px; /* Taille de police augmentée */
+    font-weight: 600; /* Police plus épaisse pour le style */
+}
+
+.chat-box {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+    max-height: none; /* Supprimer la limite de hauteur */
+}
+
+.chat-input {
+    display: flex;
+    align-items: center; /* Aligner les éléments verticalement au centre */
+    gap: 10px; /* Espace entre les éléments */
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+#user-input {
+    flex: 1; /* La boîte de texte prend tout l'espace disponible */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif; /* Utiliser la police Poppins */
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Espace entre les boutons */
+}
+
+#send-btn, #location-btn {
+    padding: 10px 15px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif; /* Utiliser la police Poppins */
+}
+
+#send-btn {
+    background-color: #02f837; /* Couleur du bouton d'envoi */
+}
+
+#send-btn:hover {
+    background-color: #02d031; /* Couleur au survol */
+}
+
+#location-btn {
+    background-color: #02f837; /* Couleur du bouton de localisation */
+}
+
+#location-btn:hover {
+    background-color: #02d031; /* Couleur au survol */
+}
+
+/* Styles pour les messages */
+.message {
+    margin-bottom: 15px;
+    opacity: 0; /* Initialement invisible */
+    transform: translateY(20px); /* Décalage vers le bas */
+    animation: fadeInUp 0.5s ease forwards; /* Animation d'apparition */
+    display: flex;
+    align-items: center;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message.user {
+    justify-content: flex-end;
+    animation: slideInRight 0.5s ease forwards; /* Animation pour les messages de l'utilisateur */
+}
+
+.message.bot {
+    justify-content: flex-start;
+    animation: slideInLeft 0.5s ease forwards; /* Animation pour les messages du bot */
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.message p {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 4px;
+    max-width: 70%;
+    margin: 0;
+    font-size: 14px; /* Taille de police réduite */
+    font-family: 'Poppins', sans-serif; /* Utiliser la police Poppins */
+}
+
+.message.user p {
+    background-color: white; /* Fond blanc pour les messages de l'utilisateur */
+    color: #eba50e; /* Couleur du texte modifiée */
+    border: 1px solid #ddd; /* Bordure ajoutée */
+}
+
+.message.bot p {
+    background-color: #f1f1f1; /* Fond gris clair pour les messages du bot */
+    color: #333; /* Couleur du texte modifiée */
+}
+
+.message img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Icônes pour le chatbot et l'utilisateur */
+.message.bot::before {
+    content: "🤖"; /* Icône du chatbot */
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.message.user::before {
+    content: "👤"; /* Icône de l'utilisateur */
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+/* Media Queries pour les écrans plus larges */
+@media (min-width: 600px) {
+    .chatbot-image img {
+        width: 150px; /* Agrandir l'image */
+        height: 150px;
+    }
+
+    .chat-container {
+        margin-left: 180px; /* Ajuster l'espace pour l'image agrandie */
+    }
+
+    .chat-header {
+        font-size: 20px; /* Augmenter la taille de la police */
+    }
+
+    .chat-input input,
+    .chat-input button {
+        font-size: 16px; /* Augmenter la taille de la police */
+    }
+
+    .message p {
+        font-size: 16px; /* Augmenter la taille de la police */
+    }
+}
+
+@media (min-width: 900px) {
+    .chatbot-image img {
+        width: 200px; /* Agrandir l'image */
+        height: 200px;
+    }
+
+    .chat-container {
+        margin-left: 240px; /* Ajuster l'espace pour l'image agrandie */
+    }
+}
+
+@media (max-width: 480px) {
+    .chatbot-image {
+        display: none; /* Masquer l'image sur les très petits écrans */
+    }
+
+    .chat-container {
+        margin-left: 0; /* Supprimer la marge pour l'image masquée */
+    }
+
+    .chat-header {
+        font-size: 16px; /* Réduire la taille de la police */
+    }
+
+    .chat-input input,
+    .chat-input button {
+        font-size: 12px; /* Réduire la taille de la police */
+    }
+
+    .message p {
+        font-size: 12px; /* Réduire la taille de la police */
+    }
+}
