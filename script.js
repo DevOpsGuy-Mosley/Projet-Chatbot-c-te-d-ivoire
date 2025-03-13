@@ -1,8 +1,5 @@
 document.getElementById('send-btn').addEventListener('click', sendMessage);
 document.getElementById('user-input').addEventListener('keypress', function (e) {
-    if (e.key === '37e91432690c844941af8aa033de57d1') {
-        sendMessage();
-    }
 });
 
 function sendMessage() {
