@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 /* Styles de base pour les petits écrans (mobile-first) */
-.body {
+body {
     font-family: 'Poppins', sans-serif; /* Utiliser la police Poppins */
     background-color: #f4f4f4;
     display: flex;
@@ -55,7 +55,7 @@
 .chat-container {
     flex: 1; /* Prendre tout l'espace disponible */
     background-color: #fff;
-    border-radius: 20px; /* Bordures plus arrondies */
+    border-radius: 25px; /* Bordures plus arrondies */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Ombre plus prononcée */
     overflow: hidden;
     display: flex;
