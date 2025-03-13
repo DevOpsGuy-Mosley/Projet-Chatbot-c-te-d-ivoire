@@ -255,7 +255,7 @@ async function getWeatherByLocation(latitude, longitude) {
 
     try {
         const response = await fetch(apiUrl);
-        const data = await response.json();
+        const data = await response.json(); //c'est utilisée en JavaScript  pour extraire les données JSON d'une réponse HTTP et les stocker dans une variable appelée data.
 
         if (data.cod === 200) {
             const city = data.name;
