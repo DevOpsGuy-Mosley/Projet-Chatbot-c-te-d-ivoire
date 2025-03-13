@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 /* Styles de base pour les petits écrans (mobile-first) */
-body {
+.body {
     font-family: 'Poppins', sans-serif; /* Utiliser la police Poppins */
     background-color: #f4f4f4;
     display: flex;
